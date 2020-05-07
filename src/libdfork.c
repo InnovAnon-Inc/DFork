@@ -17,7 +17,7 @@ static int parentcb_exit (pid_t cpid, void *restrict arg) {
    exit (EXIT_SUCCESS);
 }
 
-__attribute__ ((warn_unused_result))
+__attribute__ ((nonnull (2), warn_unused_result))
 static int childcb_exit (pid_t cpid, void *restrict arg) {
    childcb_exit_t *p       = arg;
    childcb_t       childcb = p->childcb;
