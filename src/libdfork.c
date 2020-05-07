@@ -12,7 +12,7 @@ typedef struct {
    void *restrict cargs;
 } childcb_exit_t;
 
-__attribute__ ((noreturn, warn_unused_result))
+__attribute__ ((noreturn, nothrow, warn_unused_result))
 static int parentcb_exit (pid_t cpid, void *restrict arg) {
    exit (EXIT_SUCCESS);
 }
