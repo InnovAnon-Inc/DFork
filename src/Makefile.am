@@ -10,4 +10,4 @@ dist_bin_SCRIPTS = libdfork_config
 
 lib_LTLIBRARIES = libdfork.la
 include_HEADERS = dfork.h
-libdfork_la_LIBADD = $(LIBDFORK_LIBADD)
+libdfork_la_LIBADD = @LIBDFORK_LIBADD@
