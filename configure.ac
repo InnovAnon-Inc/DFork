@@ -8,25 +8,27 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
  Makefile
  src/Makefile
+ src/libdfork.pc
 ])
+
+PKG_PROG_PKG_CONFIG
 
 AC_ARG_ENABLE([use-submodules],
     AS_HELP_STRING([--enable-use-submodules], [Enable use submodules]))
 AM_CONDITIONAL([USE_SUBMODULES], [test x"$enable_use_submodules" = "xyes"])
 
 AC_CONFIG_MACRO_DIR([m4])
-#AC_CONFIG_SUBDIRS([glitter])
 
 AC_CHECK_HEADERS([stdlib.h unistd.h sys/types.h])
-AC_CHECK_HEADERS([glitter.h ezfork.h restart.h sfork.h])
+#AC_CHECK_HEADERS([glitter.h ezfork.h restart.h sfork.h])
 
-AC_CHECK_LIB([stdlib],[fork],[ezfork],[restart],[sfork])
+#AC_CHECK_LIB([stdlib],[fork],[ezfork],[restart],[sfork])
+AC_CHECK_LIB([stdlib],[fork])
 
-#srcdir = @srcdir@
-#LIBDFORK_LIBADD="`PATH=$(srcdir)src:$PATH libdfork_config --libs`"
-LIBDFORK_LIBADD="`PATH=src:$PATH libdfork_config --libs`"
-AC_SUBST(LIBDFORK_LIBADD)
+PKG_CHECK_MODULES([GLITTER],[glitter],,)
+PKG_CHECK_MODULES([SFORK],[libsfork],,)
 
 INNOVANON_WARNINGS([])
 
 AC_OUTPUT
+

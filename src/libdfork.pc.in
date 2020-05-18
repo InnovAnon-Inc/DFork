@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+#dfork_utility=dfork-test
+
+Name: @PACKAGE_NAME@
+Description: dfork library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -ldfork
+Cflags: -I${includedir}
+Requires: glitter libsfork
+Requires.private:
+
